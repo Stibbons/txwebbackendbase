@@ -7,9 +7,9 @@ test_txwebbackendbase
 Tests for `txwebbackendbase` module.
 """
 
-import pytest
+# import pytest
 
-from txwebbackendbase import txwebbackendbase
+# from txwebbackendbase import txwebbackendbase
 
 
 class TestTxwebbackendbase(object):
@@ -24,4 +24,3 @@ class TestTxwebbackendbase(object):
 
     def test_something(self):
         pass
-
