@@ -54,3 +54,4 @@ doc/build
 # don't track lock file for libraries
 Pipfile.lock
 ChangeLog
+AUTHORS
