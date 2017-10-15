@@ -29,7 +29,7 @@ from __future__ import unicode_literals
 import types
 
 
-class __Singleton:
+class __Singleton(object):
     """
     A non-thread-safe helper class to ease implementing singletons.
     This should be used as a decorator -- not a metaclass -- to the
