@@ -12,11 +12,11 @@ python:
 
 install:
   - pip install -U pip pipenv
-  - pipenv install --dev
+  - make dev
 
 script:
-  - pipenv run python setup.py flake8
-  - pipenv run pytest txwebbackendbase
+  - make check
+  - make test-unit
 
 after_success:
   coveralls
