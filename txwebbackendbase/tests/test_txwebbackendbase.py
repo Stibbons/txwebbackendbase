@@ -1,15 +1,13 @@
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
-
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 test_txwebbackendbase
 ----------------------------------
 Tests for `txwebbackendbase` module.
 """
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+from __future__ import unicode_literals
 
 # import pytest
 

@@ -17,3 +17,4 @@ isort = "*"
 
 [packages]
 pbr = ">=1.6"
+Twisted = "*"

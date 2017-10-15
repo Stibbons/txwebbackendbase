@@ -10,7 +10,9 @@ import sys
 
 def recursive_iglob_fallback(path):
     try:
+        # pylint: disable=import-error
         import glob2
+        # pylint: enable=import-error
     except Exception:
         raise Exception("glob2 not installed on your environment !")
     return glob2.iglob(path, with_matches=True)

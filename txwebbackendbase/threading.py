@@ -177,6 +177,5 @@ _EXPORTS = [
     'synchronizedDeferred',
 ]
 
-
 # export our methods
 __all__ = _EXPORTS

@@ -5,14 +5,21 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 import logging
+import sys
 import tempfile
 from logging.handlers import RotatingFileHandler
-from pathlib2 import Path
+
+# pylint: disable=import-error
+if sys.version_info > (3, 0):
+    from pathlib import Path
+else:
+    from pathlib2 import Path
 
 try:
     import colorlog
 except Exception:
     colorlog = None
+# pylint: enable=import-error
 
 
 def temp_dir(name, root=None):

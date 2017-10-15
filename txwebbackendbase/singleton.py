@@ -55,14 +55,21 @@ class __Singleton:
         try:
             return self._instance
         except AttributeError:
+            # pylint: disable=attribute-defined-outside-init
             self._instance = self._decorated(*args, **kwargs)
 
+            # pylint: enable=attribute-defined-outside-init
+
             def unload(inst):
+                # pylint: disable=protected-access
                 inst.__singleton.unload()
+                # pylint: enable=protected-access
 
             # Magically bind "unload" as a method
             self._instance.unload = types.MethodType(unload, self._instance)
+            # pylint: disable=protected-access
             self._instance.__singleton = self
+            # pylint: enable=protected-access
             return self._instance
 
     def __call__(self, *args, **kwargs):
