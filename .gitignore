@@ -51,4 +51,6 @@ doc/build
 .*.swp
 .*sw?
 
-Pipfile.lock # don't track lock file for libraries
+# don't track lock file for libraries
+Pipfile.lock
+ChangeLog

@@ -5,7 +5,6 @@ from __future__ import unicode_literals
 
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 """
 test_txwebbackendbase
 ----------------------------------
@@ -18,7 +17,6 @@ Tests for `txwebbackendbase` module.
 
 
 class TestTxwebbackendbase(object):
-
     @classmethod
     def setup_class(cls):
         pass

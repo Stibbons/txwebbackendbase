@@ -504,7 +504,8 @@ class _InspectorGadget(object):
         """display the calling arguments"""
         argsString = ','.join(map(str, self.args))
         if self.kwargs:
-            argsString += ',' + ','.join(["%s=%s" % pair for pair in self.kwargs.items()])
+            argsString += (',' +
+                           ','.join(["%s=%s" % pair for pair in self.kwargs.items()]))
         self.write(">>> Calling %s(%s)" % (self.function.func_name, argsString))
 
     def __call__(self, *args, **kwargs):

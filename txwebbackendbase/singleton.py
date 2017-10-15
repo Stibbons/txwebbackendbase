@@ -30,7 +30,6 @@ import types
 
 
 class __Singleton:
-
     """
     A non-thread-safe helper class to ease implementing singletons.
     This should be used as a decorator -- not a metaclass -- to the
@@ -60,6 +59,7 @@ class __Singleton:
 
             def unload(inst):
                 inst.__singleton.unload()
+
             # Magically bind "unload" as a method
             self._instance.unload = types.MethodType(unload, self._instance)
             self._instance.__singleton = self
@@ -71,5 +71,6 @@ class __Singleton:
     def unload(self):
         if hasattr(self, "_instance"):
             delattr(self, "_instance")
+
 
 singleton = __Singleton
