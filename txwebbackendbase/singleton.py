@@ -1,4 +1,26 @@
 # -*- coding: utf-8 -*-
+"""
+Singleton class definition
+
+Usage:
+
+    @singleton
+    class MySingletonClass(object):
+        def __init__(self):
+            pass
+        ...
+        def aFunction(self):
+            pass
+
+Later in the code:
+
+    from module.of.MySingleton import MySingletonClass
+    def anyFunction(...):
+        ...
+        MySingletonClass().aFunction(...)
+
+
+"""
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -7,7 +29,7 @@ from __future__ import unicode_literals
 import types
 
 
-class singleton:
+class __Singleton:
 
     """
     A non-thread-safe helper class to ease implementing singletons.
@@ -49,3 +71,5 @@ class singleton:
     def unload(self):
         if hasattr(self, "_instance"):
             delattr(self, "_instance")
+
+singleton = __Singleton

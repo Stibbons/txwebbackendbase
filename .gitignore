@@ -50,3 +50,5 @@ doc/build
 *~
 .*.swp
 .*sw?
+
+Pipfile.lock # don't track lock file for libraries
