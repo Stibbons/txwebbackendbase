@@ -34,10 +34,6 @@ pylint:
 
 build: dists
 
-run-local:
-	@echo "Starting Dopplerr on http://localhost:$(TEST_PORT) ..."
-	pipenv run $(MODULE) --port $(TEST_PORT) --verbose --logfile "debug.log" --mapping tv=Series --languages $(SUBDLSRC_LANGUAGES)
-
 shell:
 	@echo "Shell"
 	pipenv shell
