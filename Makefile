@@ -72,7 +72,7 @@ requirements:
 githook:style
 
 push: githook requirements
-	@git push origin --tags
+	git push origin --tags
 
 # aliases to gracefully handle typos on poor dev's terminal
 check: checks
