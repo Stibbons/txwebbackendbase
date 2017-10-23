@@ -7,6 +7,9 @@ all: dev style requirements checks build dists test-unit
 dev:
 	pipenv install --dev
 
+dev-py2:
+	pipenv install --dev --two
+
 install-local:
 	pipenv install
 
@@ -55,6 +58,8 @@ bdist:
 wheels:
 	@pipenv run python setup.py bdist_wheel
 
+release: requirements
+
 pypi-publish: build
 	@echo "Publishing to Pypy"
 	pipenv run python setup.py upload -r pypi
@@ -69,6 +74,9 @@ githook:style
 
 push: githook requirements
 	git push origin --tags
+
+clean:
+	pipenv --rm
 
 # aliases to gracefully handle typos on poor dev's terminal
 check: checks
