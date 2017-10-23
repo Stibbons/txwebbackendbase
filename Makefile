@@ -80,4 +80,5 @@ install: install-system
 pypi: pypi-publish
 styles: style
 test: test-unit
+unittest: test-unit
 wheel: wheels
