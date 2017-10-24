@@ -6,9 +6,6 @@ txwebbackendbase
 
 .. image:: https://travis-ci.org/Stibbons/txwebbackendbase.svg?branch=master
     :target: https://travis-ci.org/Stibbons/txwebbackendbase
-.. image:: https://readthedocs.org/projects/txwebbackendbase/badge/?version=latest
-   :target: http://txwebbackendbase.readthedocs.io/en/latest/?badge=latest
-   :alt: Documentation Status
 .. image:: https://coveralls.io/repos/github/Stibbons/txwebbackendbase/badge.svg
    :target: https://coveralls.io/github/Stibbons/txwebbackendbase
 .. image:: https://badge.fury.io/py/txwebbackendbase.svg
@@ -21,19 +18,17 @@ txwebbackendbase
 Generic Base framework for Web App backend using Twisted
 
 * Free software: MIT
-* Documentation: https://txwebbackendbase.readthedocs.org/en/latest/
 * Source: https://github.com/Stibbons/txwebbackendbase
 
 Features
 --------
 
-* TODO
+Set of utility function not part of Twisted official library I often need, for example:
 
-Usage
------
-
-* TODO
-
+- ``txwebbackendbase.logging.setupLogger``: setup colorful logger
+- ``txwebbackendbase.request.[jsonify|dejsonify]``: send or receive json with ``request``/``treq``
+- ``txwebbackendbase.singleton.singleton``: declare a class as singleton to instance it once in the whole application
+- ``txwebbackendbase.threading.deferredAsThread``: function decorator to run a blocking function in a thread
 
 Note: See `pipenv documentation <https://github.com/kennethreitz/pipenv>`_ for Pipfile
 specification.
