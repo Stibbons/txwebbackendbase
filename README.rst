@@ -25,7 +25,7 @@ Features
 
 Set of utility function not part of Twisted official library I often need, for example:
 
-- ``txwebbackendbase.logging.setupLogger``: setup colorful logger
+- ``txwebbackendbase.logging.setupLogger``: setup colorful logger (if `colorlog` installed)
 - ``txwebbackendbase.request.[jsonify|dejsonify]``: send or receive json with ``request``/``treq``
 - ``txwebbackendbase.singleton.singleton``: declare a class as singleton to instance it once in the whole application
 - ``txwebbackendbase.threading.deferredAsThread``: function decorator to run a blocking function in a thread

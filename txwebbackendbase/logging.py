@@ -42,6 +42,29 @@ def setupLogger(no_color=False,
                 color_date_fmt=DEFAULT_COLOR_DATE_FMT,
                 fmt=DEFAULT_FMT,
                 date_fmt=DEFAULT_DATE_FMT):
+    """
+    Simple yet efficient logger configuration utility.
+
+    4 satisfying flavors of format string are provided:
+    - no date, no color
+    - date, no color
+    - no date, color
+    - data, color
+
+    Typically, you call this method as soon as possible in your application, so you have logs
+    on your terminal. Then you recall it with options, depending on your application configuration
+    (ex: verbose, output to log file, ...)
+
+    Usage:
+    ```
+    def main():
+        setupLogger()
+        ...
+        # read command line argument
+        verbose = opt/argparse.verbose
+        setupLogger(level=logging.DEBUG is verbose else logging.INFO)
+    ```
+    """
     root_logger = logging.getLogger()
     root_logger.setLevel(level)
     global g_file_handler
@@ -79,5 +102,14 @@ def setupLogger(no_color=False,
             })
         stream_handler.setFormatter(colored_formatter)
     else:
+        if show_time:
+            format_str = date_fmt
+        else:
+            format_str = fmt
         stream_handler = logging.StreamHandler()
+        stream_formatter = logging.Formatter(format_str)
+        stream_handler.setFormatter(stream_formatter)
+    if g_stream_handler:
+        root_logger.removeHandler(g_stream_handler)
     root_logger.addHandler(stream_handler)
+    g_stream_handler = stream_handler

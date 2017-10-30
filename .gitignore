@@ -55,3 +55,4 @@ doc/build
 Pipfile.lock
 ChangeLog
 AUTHORS
+.cache
