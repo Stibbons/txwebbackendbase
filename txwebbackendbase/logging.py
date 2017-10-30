@@ -5,16 +5,11 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 import logging
-import sys
 import tempfile
 from logging.handlers import RotatingFileHandler
+from pathlib import Path
 
 # pylint: disable=import-error
-if sys.version_info > (3, 0):
-    from pathlib import Path
-else:
-    from pathlib2 import Path
-
 try:
     import colorlog
 except Exception:
@@ -29,21 +24,46 @@ def temp_dir(name, root=None):
     return directory
 
 
-def setupLogger(no_color=False, level=logging.INFO, logfile=None):
+DEFAULT_FILE_FMT = '%(asctime)s :: %(levelname)-8s :: %(pathname)s:%(lineno)s :: %(message)s'
+DEFAULT_COLOR_FMT = ("%(log_color)s%(levelname)-8s%(reset)s " "%(message_log_color)s%(message)s")
+DEFAULT_COLOR_DATE_FMT = "%(asctime)s " + DEFAULT_COLOR_FMT
+DEFAULT_FMT = "%(levelname)-8s %(message)s"
+DEFAULT_DATE_FMT = "%(asctime)s " + DEFAULT_FMT
+
+g_file_handler=None
+g_stream_handler=None
+
+def setupLogger(no_color=False,
+                level=logging.INFO,
+                logfile=None,
+                show_time=True,
+                file_fmt=DEFAULT_FILE_FMT,
+                color_fmt=DEFAULT_COLOR_FMT,
+                color_date_fmt=DEFAULT_COLOR_DATE_FMT,
+                fmt=DEFAULT_FMT,
+                date_fmt=DEFAULT_DATE_FMT):
     root_logger = logging.getLogger()
     root_logger.setLevel(level)
+    global g_file_handler
+    global g_stream_handler
 
     if logfile:
-        file_formatter = logging.Formatter(
-            '%(asctime)s :: %(levelname)-8s :: %(pathname)s:%(lineno)s :: %(message)s')
+        file_formatter = logging.Formatter(file_fmt)
         file_handler = RotatingFileHandler(str(logfile), 'a', 5 * 1024 * 1024, 1)
         file_handler.setFormatter(file_formatter)
+        if g_file_handler:
+            root_logger.removeHandler(g_file_handler)
         root_logger.addHandler(file_handler)
+        g_file_handler = file_handler
 
     if no_color is False and colorlog is not None:
+        if show_time:
+            format_str = color_date_fmt
+        else:
+            format_str = color_fmt
         stream_handler = colorlog.StreamHandler()
         colored_formatter = colorlog.ColoredFormatter(
-            "%(log_color)s%(levelname)-8s%(reset)s %(message_log_color)s%(message)s",
+            format_str,
             log_colors={
                 'WARNING': 'yellow',
                 'ERROR': 'red',
