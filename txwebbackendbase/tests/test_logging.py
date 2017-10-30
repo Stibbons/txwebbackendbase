@@ -17,13 +17,13 @@ log = logging.getLogger(__name__)
 
 
 class TestLogging(object):
-
     def test_something(self):
         setupLogger(level=logging.DEBUG)
         log.debug("debug mesg 1")
         setupLogger(level=logging.INFO)
         log.debug("debug mesg 2")
         log.info("info mesg")
+
 
 if __name__ == '__main__':
     setupLogger(level=logging.DEBUG)

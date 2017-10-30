@@ -30,8 +30,9 @@ DEFAULT_COLOR_DATE_FMT = "%(asctime)s " + DEFAULT_COLOR_FMT
 DEFAULT_FMT = "%(levelname)-8s %(message)s"
 DEFAULT_DATE_FMT = "%(asctime)s " + DEFAULT_FMT
 
-g_file_handler=None
-g_stream_handler=None
+g_file_handler = None
+g_stream_handler = None
+
 
 def setupLogger(no_color=False,
                 level=logging.INFO,
